@@ -1,17 +1,39 @@
-<!-- checker/templates/checker/active_devices.html -->
 <!DOCTYPE html>
 <html>
 <head>
+    {% load static %}
     <title>Active Devices</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+
 </head>
 <body>
     <h1>Active Devices</h1>
     {% if active_devices %}
-        <ul>
-            {% for device in active_devices %}
-                <li>{{ device }}</li>
-            {% endfor %}
-        </ul>
+        <table class="table table-bordered table-hover">
+            <thead class="thead-dark">
+                <tr>
+                    <th>No.</th>
+                    <th>IP Address</th>
+                    <th>Name</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+
+            <tbody class="">
+                {% for device_ip in active_devices %}
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td><a href="device-{{device_ip}}/">{{ device_ip }}</a></td>
+                        <td>Raspberry pi</td>
+                        <td>Ready</td>
+                    </tr>
+                {% endfor %}
+
+            </tbody>
+
+        </table>
     {% else %}
         <p>No active devices</p>
     {% endif %}
