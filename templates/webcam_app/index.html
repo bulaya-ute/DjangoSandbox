@@ -3,11 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Webcam Stream</title>
+    <title>Live Webcam Stream</title>
     <style>
         #video {
             display: block;
             margin: 0 auto;
+            border: 1px solid black;
         }
         #controls {
             text-align: center;
@@ -16,22 +17,10 @@
     </style>
 </head>
 <body>
-    <video id="video" width="640" height="480" autoplay></video>
+    <img id="video" src="/webcam/video_feed" width="640" height="480">
     <div id="controls">
         <button id="capture">Capture Image</button>
         <button id="analyze">Analyze</button>
     </div>
-    <script>
-        (function() {
-            const video = document.getElementById('video');
-
-            if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-                navigator.mediaDevices.getUserMedia({ video: true }).then(stream => {
-                    video.srcObject = stream;
-                    video.play();
-                });
-            }
-        })();
-    </script>
 </body>
 </html>

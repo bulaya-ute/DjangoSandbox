@@ -1,0 +1,19 @@
+<!-- checker/templates/checker/active_devices.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Active Devices</title>
+</head>
+<body>
+    <h1>Active Devices</h1>
+    {% if active_devices %}
+        <ul>
+            {% for device in active_devices %}
+                <li>{{ device }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No active devices</p>
+    {% endif %}
+</body>
+</html>
